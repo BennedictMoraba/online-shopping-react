@@ -24,7 +24,9 @@ const Shop = () => {
 
     return (
 
+        
         <div className="prices">
+          
             <div className="container">
                 <div className="row">
                     {products && products.map(product => (
