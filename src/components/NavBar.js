@@ -8,27 +8,29 @@ const NavBar = () => {
     return (
         <Router>
             <header className="nav-header">
-                <nav id ="navBar">
-                    <a id ="logo">LOGO</a>
-                    <ul id="nav-menu">
-                        <Link to="/" id="link-nav">Home</Link>
-                        <Link to="/cart" id="link-nav">Cart</Link>
-                        <Link to="/signUp" id="link-nav">SignUp</Link>
-                    </ul>
-                </nav>
+                <div className="fixed-header">
+                    <nav id="navBar">
+                        <a id="logo">LOGO</a>
+                        <ul id="nav-menu">
+                            <Link to="/" id="link-nav">Home</Link>
+                            <Link to="/cart" id="link-nav">Cart</Link>
+                            <Link to="/signUp" id="link-nav">SignUp</Link>
+                        </ul>
+                    </nav>
+                </div>
             </header>
-           <Switch>
-               <Route exact path="/">
-                   <Shop></Shop>
+            <Switch>
+                <Route exact path="/">
+                    <Shop></Shop>
                 </Route>
                 <Route path="/cart">
                     <Cart></Cart>
                 </Route>
                 <Route path="/signUp">
-                 <SignUp></SignUp>
+                    <SignUp></SignUp>
                 </Route>
 
-           </Switch>
+            </Switch>
         </Router>
     );
 };
