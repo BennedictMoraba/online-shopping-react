@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Cart from './Cart';
-import db from '../firebase'
+//import db from '../firebase'
+import {db} from '../firebase'
 import Button from '@material-ui/core/Button';
 
 const Shop = () => {
