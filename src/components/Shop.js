@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 //import db from '../firebase'
 import {db, auth} from '../firebase'
 import Button from '@material-ui/core/Button';
-import { ArrowLeftTwoTone } from '@material-ui/icons';
+
 
 const Shop = () => {
 

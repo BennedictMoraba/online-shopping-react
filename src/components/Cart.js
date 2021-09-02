@@ -18,6 +18,7 @@ const useStyles= makeStyles({
 
 const Cart = () => {
 
+    
     let user = auth.currentUser
     const [cartList, setCartList] = useState([])
     const fetchCartItems = async () => {
