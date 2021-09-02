@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Cart from './Cart';
+import { useHistory } from 'react-router';
 //import db from '../firebase'
-import {db} from '../firebase'
+import {db, auth} from '../firebase'
 import Button from '@material-ui/core/Button';
+import { ArrowLeftTwoTone } from '@material-ui/icons';
 
 const Shop = () => {
 
     const [products, setProducts] = useState([])
+    let history = useHistory()
+    let user = auth.currentUser
     const fetchData = async () => {
         db.collection("products").onSnapshot((snapshot) => {
             const prodData = []
@@ -23,6 +26,26 @@ const Shop = () => {
         fetchData()
     }, [])
 
+    const addToCart = async(product) =>{
+        //console.log(product)
+        try{
+            if(user){
+                db.collection("cart").add({
+                    uid: user.uid,
+                    product
+                }).then(
+                    alert("Items added to cart")
+                ).catch((error)=>{
+                    console.log(error.message)
+                })
+            }else{
+                alert("Please login")
+            }
+
+        }catch(error){
+            console.log(error.message)
+        }
+    }
     return (
 
         
@@ -39,7 +62,7 @@ const Shop = () => {
                                 <figcaption className="product-name">{product.productName}</figcaption>
                                 <span className="product-description">{product.productDescription}</span><br />
                                 <span className="product-price">R{product.productPrice}</span><br />
-                                <Button variant="contained" href="/cart" size="small" color="primary" >Add to cart</Button>
+                                <Button variant="contained" onClick={()=>addToCart(product)} size="small" color="primary" >Add to cart</Button>
                             </figure>
 
                         </div>
